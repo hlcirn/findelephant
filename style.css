@@ -1,0 +1,45 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #fff;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+#stage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+#world {
+  position: absolute;
+  inset: 0;
+  transform: translate(calc(var(--cx) * -100%), calc(var(--cy) * -100%));
+  transition: transform 0.28s steps(4, end);
+}
+
+.room {
+  position: absolute;
+  inset: 0;
+  transform: translate(calc(var(--x) * 100%), calc(var(--y) * 100%));
+}
+
+.room img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.room img:not([src]) {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #world { transition: none; }
+}
